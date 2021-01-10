@@ -46,9 +46,10 @@ font-size: 3rem;
 `
 const SubHeading = styled.div`
 color: ${props => props.theme.subHeading};
-background: ${props => props.theme.backgroundColor}
+background: ${props => props.theme.backgroundColor};
 padding: 0.5rem;
 font-size: 2rem;
+margin-bottom: 2rem;
 `
 
 const PrimaryButton = styled.button`
