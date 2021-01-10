@@ -40,7 +40,8 @@ function App(props) {
       <Switch>
         <Route path="/" component={Landing} exact />
         <Route path="/partner" component={Partner} exact />
-        <Route path="*" component={Login} />
+        <Route path="/restaurant/menu" component={RestaurantMenu}/>
+        <Route path="/*" component={Login} />
       </Switch>
     </div>)
 }
