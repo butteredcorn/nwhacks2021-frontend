@@ -16,7 +16,7 @@ function QRCodes({}) {
     useEffect(() => {
         console.log(restaurant)
         console.log(restaurant.table_qr_codes)
-    })
+    },[])
 
     return (
         <div>

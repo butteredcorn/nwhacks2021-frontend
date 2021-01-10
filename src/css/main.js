@@ -38,13 +38,13 @@ box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.3);
 `
 
 const MainHeading = styled.div`
-color: ${props => props.theme.mainHeading};
+color: ${props => props.theme.mainHeadingColour};
 background: ${props => props.theme.backgroundColor};
 padding: 0.5rem;
 font-size: 3rem;
 `
 const SubHeading = styled.div`
-color: ${props => props.theme.subHeading};
+color: ${props => props.theme.subHeadingColour};
 background: ${props => props.theme.backgroundColor};
 padding: 0.5rem;
 font-size: 2rem;
