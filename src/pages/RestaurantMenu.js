@@ -30,8 +30,8 @@ function RestaurantMenu({}) {
 
     const getRestaurant = async (restaurant_id) => {
         const restaurantObj = await getRestaurantByID(restaurant_id)
-        setRestaurant({loading: false, data: restaurantObj})
-        setOrder({restaurant: restaurantObj[0], order: null})
+        await restaurantObj && setRestaurant({loading: false, data: restaurantObj})
+        await restaurantObj && setOrder({restaurant: restaurantObj[0], order: null})
     }
 
     const loadPage = async () => {
@@ -69,15 +69,15 @@ function RestaurantMenu({}) {
         }
         const submission = {restaurant_id: order.restaurant.generatedId, table_id: restaurantQS.table, items: items}
         const orderID = await placeOrder(submission)
-        redirectToPaymentPage(orderID)
+        redirectToPaymentPage({...orderID , items})
     }
 
     const modalFunction = (order) => {
         setShowModel({show: !showModal.show, order: order})
     }
 
-    const redirectToPaymentPage = (orderID) => {
-        setRedirect({redirect: !redirect.redirect, path: "/restaurant/payment", state: orderID})
+    const redirectToPaymentPage = (orderInfo) => {
+        setRedirect({redirect: !redirect.redirect, path: "/restaurant/payment", state: orderInfo})
     }
 
     useEffect(() => {

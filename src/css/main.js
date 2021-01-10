@@ -22,6 +22,7 @@ margin: 2rem;
 margin: 4rem;
 border-radius: 15px;
 box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.3);
+padding:40px 20px;
 `
 
 const FormContainer = styled.form`

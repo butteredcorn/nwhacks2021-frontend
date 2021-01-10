@@ -6,16 +6,27 @@ import styled from "styled-components"
 
 import NavBar from '../components/NavBar'
 
-import { PageContainer, SectionContainer, MainHeading, SubHeading } from '../css/main'
+import { PageContainer, SectionContainer, MainHeading, SubHeading , PrimaryButton } from '../css/main'
 
 function Payment({}) {
+
+    const reducer = (accumulator, currentValue) => (accumulator.price * accumulator.quantity) + (currentValue.price * currentValue.quantity);
+
+
     const location = useLocation();
-    const [orderID, setOrderID] = useState(null)
+    const [order, setOrder] = useState(null)
+    const [sum , setSum] = useState(0)
 
     useEffect(() => {
-        console.log(location.state)
-        setOrderID(location.state.orderId)
-    },[])
+       if(location.state){
+        setOrder(location.state)
+        const itemsSum = (location.state.items.reduce(reducer)).price
+        console.log(itemsSum)
+        setSum(itemsSum)
+       }
+    },[location.state])
+
+
 
     return (
         <div>
@@ -26,9 +37,12 @@ function Payment({}) {
         <PageContainer>
             <main>
                 <SectionContainer>
-                    <MainHeading>Payment Page!</MainHeading>
+                    <MainHeading>Total : ${sum}</MainHeading>
                     <SubHeading>Stripe!</SubHeading>
-                    <p>Order ID: {orderID}</p>
+                    <p>Order ID: {order && order.orderId}</p>
+                    <PrimaryButton variant="primary" className="Primary-Button" >
+                     Checkout
+                    </PrimaryButton>
                 </SectionContainer>
             </main>
             <footer>
