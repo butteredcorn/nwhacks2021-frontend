@@ -34,6 +34,7 @@ function App(props) {
         <Route path="/postpayment" component={PostPayment} />
         <Route path="/partner" component={Partner} exact />
         <Route path="/restaurant/dashboard" component={Dashboard} exact/>
+        <Route path="/*" component={Home} exact/>
       </Switch>
     </div>
   )

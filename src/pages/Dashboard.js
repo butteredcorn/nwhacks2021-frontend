@@ -7,7 +7,7 @@ import queryString from 'query-string'
 import { useLocation } from 'react-router-dom'
 import { getRestaurantOrders } from '../controllers/server-routes'
 
-import { PageContainer, SectionContainer, MainHeading, SubHeading, PrimaryButton, Text } from '../css/main'
+import { PageContainer, SectionContainer, MainHeading, SubHeading, PrimaryButton, SmallButton, Text } from '../css/main'
 
 const OrderContainer = styled.div`
 display: flex;
@@ -86,6 +86,17 @@ function Dashboard({}) {
         console.log(fetchedOrders)
     }
 
+    const fillOrder = (orderID) => {
+        const updatedOrders = []
+        for (let order of orders.data) {
+            if (order.orderId == orderID) {
+                continue;
+            }
+            updatedOrders.push(order)
+        }
+        setOrders({loading: false, data: updatedOrders})
+    }
+
     useEffect(() => {
         loadPage()
     } , [])
@@ -98,6 +109,7 @@ function Dashboard({}) {
         
         <PageContainer>
            <SectionContainer className="Dashboard-Container">
+                <MainHeading>Orders</MainHeading>
                 {!orders.loading && Array.isArray(orders.data) && orders.data.map((order, index) => 
                     <OrderContainer key={order.orderId}>
                         <div className="Order-Header Dashboard-OrderItem-Container">
@@ -110,6 +122,7 @@ function Dashboard({}) {
                                 <Text>Quantity: {orderItem.quantity}</Text>
                             </OrderItimContainer>
                         )}
+                        {<SmallButton name={order.orderId} value={order.orderId} onClick={() => fillOrder(order.orderId)}>Complete</SmallButton>}
                     </OrderContainer>
                 )}
            </SectionContainer>

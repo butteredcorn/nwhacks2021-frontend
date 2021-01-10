@@ -51,7 +51,7 @@ function Navbar({}) {
             <div className="navbar">
             <NavLink to="/home">Home</NavLink>
             <NavLink to="/restaurant/search">Create a New Restaurant</NavLink>
-            <NavLink to="/restaurant/dashboard">Restaurant Dashboard</NavLink>
+            <NavLink to="/restaurant/dashboard?id=2a59be4b-f551-4730-adf2-337185c4d377">Restaurant Dashboard</NavLink>
             </div>
             <NavToggle onClick={toggleTheme}>{localThemeState == 'dark' ? "Light Mode" : "Dark Mode"}</NavToggle>
         </NavBar>
