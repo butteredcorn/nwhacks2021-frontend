@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import styled from "styled-components"
+import {Route} from "react-router-dom"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+import './css/App.css';
+
+import Home from './pages/Home'
+import Login from './pages/Login'
+import RestaurantSearch from './pages/QueryRestaurant'
+
+function App({}) {
+
+  const [token, setToken] = useState(null)
+
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    setToken(token)
+  }, [])
+
+  return token ? (
+    <div>
+      <Route exact path="/" component={Home}/>
+      <Route path="/restaurant/search" component={RestaurantSearch}></Route>
     </div>
-  );
+  ) 
+  :
+  (<div>
+    <Route path="*" component = {Login}/>
+  </div>)
 }
 
 export default App;

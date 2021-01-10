@@ -1,0 +1,14 @@
+.Search-Bar-Button {
+    border-radius: 25px;
+    margin-left: 0.5rem;
+  }
+  
+  .Restaurant-Search-Bar {
+    min-width: 60%;
+  }
+
+  .Restaurant-Search-Main {
+      min-width: 80%;
+      min-height: 80%;
+  }
+  
