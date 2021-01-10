@@ -35,6 +35,10 @@ header {
  
 }
 
+.Dashboard-Container {
+  max-width: 80%;
+}
+
 .Dashboard-OrderItem-Container > * {
   margin: 0.25rem;
 }
