@@ -6,6 +6,7 @@ import './css/App.css';
 
 import Home from './pages/Home'
 import Login from './pages/Login'
+import RestaurantSearch from './pages/QueryRestaurant'
 
 function App({}) {
 
@@ -19,7 +20,7 @@ function App({}) {
   return token ? (
     <div>
       <Route exact path="/" component={Home}/>
-      {/* <Route path="/page" component={}></Route> */}
+      <Route path="/restaurant/search" component={RestaurantSearch}></Route>
     </div>
   ) 
   :

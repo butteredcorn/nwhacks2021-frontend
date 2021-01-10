@@ -1,15 +1,18 @@
 import styled from "styled-components"
 
-import { PageContainer, SectionContainer, MainHeading, SubHeading } from '../css/main'
+import NavBar from '../components/NavBar'
 
+import { PageContainer, SectionContainer, MainHeading, SubHeading } from '../css/main'
 
 function Home({}) {
 
     return (
-        <PageContainer>
+        <div>
             <header>
-
+                <NavBar/>
             </header>
+        
+        <PageContainer>
             <main>
                 <SectionContainer>
                     <MainHeading>Hello World!</MainHeading>
@@ -20,6 +23,7 @@ function Home({}) {
 
             </footer>
         </PageContainer>
+        </div>
     )
 }
 
