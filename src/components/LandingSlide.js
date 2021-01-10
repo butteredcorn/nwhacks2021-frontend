@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-import { ReactComponent as ReactLogo } from '/public/assets/logo_nomnom.svg';
+//import { ReactComponent as ReactLogo } from '/public/assets/logo_nomnom.svg';
 
 const Slide = styled.div`
   display: flex;
@@ -20,7 +20,7 @@ const HeaderDiv = styled.div`
 export default () => {
     return (
         <Slide>
-            <HeaderDiv>
+            {/* <HeaderDiv>
                 <ReactLogo />
                 <LandingLink />
             </HeaderDiv>
@@ -31,7 +31,7 @@ export default () => {
                 <ContentButton></ContentButton>
             </ContentDiv>
 
-            <Illustration></Illustration>
+            <Illustration></Illustration> */}
         </Slide>
     );
 };

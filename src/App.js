@@ -21,8 +21,8 @@ function App({ }) {
   return token ? (
     <div>
       <Switch>
-        <Route path="/" component={Landing} />
-        <Route exact path="/home" component={Home} />
+        <Route exact path="/" component={Landing} />
+        <Route path="/home" component={Home} />
         <Route path="/restaurant/search" component={RestaurantSearch}></Route>
       </Switch>
     </div>
@@ -31,7 +31,7 @@ function App({ }) {
     (<div>
       <Switch>
         <Route path="/" component={Landing} exact />
-        <Route path="*" component={Login} />
+        <Route path="/*" component={Login} />
       </Switch>
     </div>)
 }
