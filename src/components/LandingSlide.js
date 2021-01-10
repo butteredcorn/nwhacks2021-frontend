@@ -93,7 +93,7 @@ export default (props) => {
 
     return (
         <Slide>
-            {/* <HeaderDiv>
+            <HeaderDiv>
                 <ReactLogo />
                 <LandingLink to={props.alt.url}>{props.alt.text}</LandingLink>
             </HeaderDiv>
