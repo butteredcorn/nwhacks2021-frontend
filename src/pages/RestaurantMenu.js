@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {useLocation} from 'react-router-dom'
 import styled from "styled-components"
 import queryString from 'query-string'
+import Modal from "react-bootstrap/Modal";
 
 import NavBar from '../components/NavBar'
 
@@ -22,8 +23,8 @@ function RestaurantMenu({}) {
     const location = useLocation()
     const [restaurant, setRestaurant] = useState({loading: true, data: []})
     const [order, setOrder] = useState({restaurant: null, order: null})
-
     const updateOrder = e => setOrder({...order, order: {...order.order, [e.target.name]: {qty: e.target.value, pricePerQty: e.currentTarget.attributes.getNamedItem("data-price").value } }});
+    const [showModal, setShowModel] = useState({show: false, order: null})
 
     const getRestaurant = async (restaurant_id) => {
         const restaurantObj = await getRestaurantByID(restaurant_id)
@@ -40,6 +41,10 @@ function RestaurantMenu({}) {
 
     const reviewOrder = () => {
         console.log(order)
+    }
+
+    const modalFunction = (order) => {
+        setShowModel({show: !showModal.show, order: order})
     }
 
     useEffect(() => {
@@ -65,9 +70,33 @@ function RestaurantMenu({}) {
                             <SmallButton name={item.title} value={1} data-price={item.price} onClick={updateOrder}>Add to cart</SmallButton>
                         </MenuContainer>
                     )}
-                    <PrimaryButton className="Primary-Button Review-Order-Button" onClick={() => reviewOrder(order)}>Review Order</PrimaryButton>
+                    <PrimaryButton className="Primary-Button Review-Order-Button" onClick={() => modalFunction(order)}>Review Order</PrimaryButton>
                 </SectionContainer>
             </main>
+
+            <Modal show={showModal.show} onHide={modalFunction}>
+                <Modal.Header closeButton>
+                <Modal.Title>Review Order</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    {showModal.order && showModal.order.order && Object.keys(showModal.order.order).map((item, index) => 
+                        <div key={item}>
+                            <p>{item}</p>
+                            <p>Qty: {showModal.order.order[item].qty}</p>
+                            <p>Price: ${((showModal.order.order[item].qty * showModal.order.order[item].pricePerQty)*100/100).toFixed(2)}</p>
+                        </div>
+                    )}
+                </Modal.Body>
+                <Modal.Footer>
+                <PrimaryButton variant="secondary" className="Primary-Button" onClick={modalFunction}>
+                    Close
+                </PrimaryButton>
+                <PrimaryButton variant="primary" className="Primary-Button" onClick={() => alert('submitted!')}>
+                    Create
+                </PrimaryButton>
+                </Modal.Footer>
+            </Modal> 
+
             <footer>
 
             </footer>
