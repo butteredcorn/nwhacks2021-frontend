@@ -52,7 +52,7 @@ const createRestaurant = async (restaurant) => {
 
 const getRestaurantByID = async (restaurant_id) => {
     try {
-        const result = await axios.get(`https://nomno.herokuapp.com/api/${restaurant_id}`)
+        const result = await axios.get(`https://nomno.herokuapp.com/api/restaurant/${restaurant_id}`)
         console.log(result.data)
         return result.data
     } catch (err) {

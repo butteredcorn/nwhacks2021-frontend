@@ -5,7 +5,7 @@ import queryString from 'query-string'
 
 import NavBar from '../components/NavBar'
 
-import { PageContainer, SectionContainer, MainHeading, SubHeading, SmallButton } from '../css/main'
+import { PageContainer, SectionContainer, MainHeading, SubHeading, SmallButton, PrimaryButton } from '../css/main'
 
 import { getRestaurantByID } from '../controllers/server-routes'
 
@@ -21,10 +21,14 @@ align-items: center;
 function RestaurantMenu({}) {
     const location = useLocation()
     const [restaurant, setRestaurant] = useState({loading: true, data: []})
+    const [order, setOrder] = useState({restaurant: null, order: null})
+
+    const updateOrder = e => setOrder({...order, order: {...order.order, [e.target.name]: {qty: e.target.value, pricePerQty: e.currentTarget.attributes.getNamedItem("data-price").value } }});
 
     const getRestaurant = async (restaurant_id) => {
         const restaurantObj = await getRestaurantByID(restaurant_id)
         setRestaurant({loading: false, data: restaurantObj})
+        setOrder({restaurant: restaurantObj[0], order: null})
     }
 
     const loadPage = async () => {
@@ -32,6 +36,10 @@ function RestaurantMenu({}) {
         const restaurantQS = queryString.parse(location.search);
         console.log(restaurantQS) //{id: "62590177-7b89-42d2-af7a-600e1a35e943", table: "1"}
         getRestaurant(restaurantQS.id)
+    }
+
+    const reviewOrder = () => {
+        console.log(order)
     }
 
     useEffect(() => {
@@ -49,14 +57,15 @@ function RestaurantMenu({}) {
                 <SectionContainer>
                     {restaurant.loading ? <MainHeading>Loading Menu</MainHeading> : <MainHeading>{restaurant.data[0].name}</MainHeading>}
                     <SubHeading>Menu</SubHeading>
-                    {!restaurant.loading && restaurant.data[0].menu.map((item, index) => 
+                    {!restaurant.loading && Array.isArray(restaurant.data) && restaurant.data[0].menu.map((item, index) => 
                         <MenuContainer key={index}>
                             <p>{item.title}</p>
                             <p>{item.description}</p>
                             <p>{item.price}</p>
-                            <SmallButton onClick={() => alert('added to cart!')}>Add to cart</SmallButton>
+                            <SmallButton name={item.title} value={1} data-price={item.price} onClick={updateOrder}>Add to cart</SmallButton>
                         </MenuContainer>
                     )}
+                    <PrimaryButton className="Primary-Button Review-Order-Button" onClick={() => reviewOrder(order)}>Review Order</PrimaryButton>
                 </SectionContainer>
             </main>
             <footer>
