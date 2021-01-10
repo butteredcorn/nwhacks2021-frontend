@@ -51,16 +51,18 @@ function QRCodes({}) {
         
         <PageContainer>
             <main>
-                <SectionContainer className="QRCode-Container">
-                    <MainHeading>Here are your QR Codes!</MainHeading>
-                    <SubHeading>Attach each one to your table and you are good to go</SubHeading>
-                    {restaurant && Array.isArray(restaurant.table_qr_codes) && restaurant.table_qr_codes.map((qrcode, index) => 
-                        <div key={index}>
-                            <Text>Table {index + 1}</Text>
-                            <img src={qrcode.qr} />
-                        </div>
-                    )}
-                </SectionContainer>
+                <QrSectionContainer className="QRCode-Container">
+                    <QrMainHeading>Here are your QR Codes!</QrMainHeading>
+                    <QrSubHeading>Attach each one to your table and you are good to go</QrSubHeading>
+                    <QrGrid>
+                        {restaurant && Array.isArray(restaurant.table_qr_codes) && restaurant.table_qr_codes.map((qrcode, index) => 
+                            <QrContainer key={index}>
+                                <Text>Table {index + 1}</Text>
+                                <img src={qrcode.qr} />
+                            </QrContainer>
+                        )}
+                    </QrGrid>
+                </QrSectionContainer>
             </main>
             <footer>
 
