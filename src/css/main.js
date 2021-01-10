@@ -21,6 +21,7 @@ min-height: 200px;
 margin: 0;
 padding: 40px;
 margin-top: 4rem;
+margin-bottom: 4rem;
 border-radius: 15px;
 box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.3);
 `
