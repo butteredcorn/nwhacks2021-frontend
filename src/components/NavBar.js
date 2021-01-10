@@ -31,10 +31,19 @@ const NavToggle = styled(NavLink)``;
 
 function Navbar({}) {
 
+    const [localThemeState, setLocalThemeState] = useState(JSON.parse(localStorage.getItem('theme')))
+
     const { dispatch } = useContext(ThemeContext);
 
     const toggleTheme = () => {
-      dispatch({ type: "toggleTheme" });
+        let nextTheme
+        if(localThemeState == 'dark') {
+            nextTheme = 'light'
+        } else {
+            nextTheme = 'dark'
+        }
+        setLocalThemeState(nextTheme)
+        dispatch({ type: "toggleTheme" });
     };
 
     return (        
@@ -43,7 +52,7 @@ function Navbar({}) {
             <NavLink to="/home">Home</NavLink>
             <NavLink to="/restaurant/search">Create a New Restaurant</NavLink>
             </div>
-            <NavToggle onClick={toggleTheme}>Toggle Theme</NavToggle>
+            <NavToggle onClick={toggleTheme}>{localThemeState == 'dark' ? "Light Mode" : "Dark Mode"}</NavToggle>
         </NavBar>
     );
 }

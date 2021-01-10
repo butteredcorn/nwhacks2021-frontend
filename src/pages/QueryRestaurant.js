@@ -29,13 +29,16 @@ const RestaurantSelectionButton = styled.button`
     flex-direction: column;
     align-items: center;
     color: ${props => props.theme.textColour};
-    background: ${props => props.theme.backgroundColour}
-    padding: 0.5rem;
+    background: ${props => props.theme.buttonColour};
+    margin: 0.5rem;
+    margin-bottom: 1rem;
     border: none;
     border-radius: 15px;
     &:focus {
         outline: none;
         box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);;
+    }&:hover {
+        background: ${props => props.theme.uiBackgroundColour};
     }
 `
 

@@ -39,13 +39,13 @@ box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.3);
 `
 
 const MainHeading = styled.div`
-color: ${props => props.theme.mainHeading};
+color: ${props => props.theme.mainHeadingColour};
 background: ${props => props.theme.backgroundColor};
 padding: 0.5rem;
 font-size: 3rem;
 `
 const SubHeading = styled.div`
-color: ${props => props.theme.subHeading};
+color: ${props => props.theme.subHeadingColour};
 background: ${props => props.theme.backgroundColor};
 padding: 0.5rem;
 font-size: 2rem;
@@ -54,11 +54,8 @@ margin-bottom: 2rem;
 
 const PrimaryButton = styled.button`
 color: ${props => props.theme.uiColour};
-background: ${props => props.theme.uiBackgroundColour}
-padding-top: 1rem;
-padding-left: 1rem;
-padding-right: 1rem;
-padding-botton: 1rem;
+background: ${props => props.theme.uiBackgroundColour};
+margin: 0.5rem;
 font-size: 1.2rem;
 border: none;
 font-weight: 500;
@@ -68,23 +65,23 @@ font-weight: 500;
 }`
 
 const SmallButton = styled.button`
+margin-bottom: 1rem;
 color: ${props => props.theme.uiColour};
-background: ${props => props.theme.uiBackgroundColour}
-padding-top: 0.5rem;
-padding-left: 0.5rem;
-padding-right: 0.5rem;
-padding-botton: 0.5rem;
+background: ${props => props.theme.buttonColour};
+margin: 0.5rem;
 font-size: 1rem;
 border: none;
 font-weight: 500;
 &:focus {
     outline: none;
     box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);;
+}&:hover {
+    background: ${props => props.theme.uiBackgroundColour};
 }` 
 
 const NavbarButton = styled.button`
 color: ${props => props.theme.textColour};
-background: ${props => props.theme.uiBackgroundColour}
+background: ${props => props.theme.buttonColour};
 font-size: 1rem;
 border: none;
 font-weight: 500;
@@ -109,6 +106,10 @@ const PasswordInput = styled(TextInput).attrs({
   })`
 `
 
+const Text = styled.p`
+color: ${props => props.theme.textColour};
+`
 
 
-export { PageContainer, FormContainer, SectionContainer, MainHeading, SubHeading, PrimaryButton, SmallButton, NavbarButton, TextInput, PasswordInput }
+
+export { PageContainer, FormContainer, SectionContainer, MainHeading, SubHeading, PrimaryButton, SmallButton, NavbarButton, TextInput, PasswordInput, Text }

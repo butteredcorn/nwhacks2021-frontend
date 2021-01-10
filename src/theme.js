@@ -7,13 +7,14 @@ const base = {
   const dark = {
     id: "dark",
     ...base,
-    containerBackgroundColour: "#FF9954",
-    backgroundColour: "black",
+    containerBackgroundColour: "#a84c00",
+    backgroundColour: "#36454F",
     textColour: "white",
     uiColour: "white",
     mainHeadingColour: "white",
     subHeadingColour: "white",
-    uiBackgroundColour: "#FF7518"
+    uiBackgroundColour: "#FF7518",
+    buttonColour: "#DEDEDE"
   };
   
   const light = {
@@ -26,6 +27,7 @@ const base = {
     mainHeadingColour: "black",
     subHeadingColour: "black",
     uiBackgroundColour: "#FF7518",
+    buttonColour: "#DEDEDE"
   };
   
 export const theme = { dark, light };
