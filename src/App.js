@@ -23,13 +23,14 @@ function App(props) {
   return token ? (
     <div>
       <Switch>
-        <Route exact path="/" component={Landing} />
-        <Route path="/home" component={Home} />
+        <Route exact path="/" component={Home} />
+        <Route path="/landing" component={Landing} />
         <Route path="/restaurant/search" component={RestaurantSearch}/>
         <Route path="/restaurant/qrcodes" component={RestaurantQRCodes}/>
         <Route path="/restaurant/menu" component={RestaurantMenu}/>
         <Route path="/restaurant/payment" component={Payment}/>
         <Route path="/postpayment" component={PostPayment} />
+        <Route path="/partner" component={Partner} exact />
       </Switch>
     </div>
   )
