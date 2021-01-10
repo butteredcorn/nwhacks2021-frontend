@@ -15,8 +15,8 @@ function Home({}) {
         <PageContainer>
             <main>
                 <SectionContainer>
-                    <MainHeading>Hello World!</MainHeading>
-                    <SubHeading>Welcome to Swish Eats</SubHeading>
+                    <MainHeading>Welcome to Nom Nom Tech!</MainHeading>
+                    <SubHeading>Scan a QR code here!</SubHeading>
                 </SectionContainer>
             </main>
             <footer>
