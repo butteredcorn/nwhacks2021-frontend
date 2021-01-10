@@ -4,7 +4,7 @@ import styled from "styled-components"
 
 import NavBar from '../components/NavBar'
 
-import { PageContainer, SectionContainer, MainHeading, SubHeading } from '../css/main'
+import { PageContainer, SectionContainer, MainHeading, SubHeading, Text } from '../css/main'
 
 const QrSectionContainer = styled(SectionContainer)`
     display: grid;
@@ -51,18 +51,16 @@ function QRCodes({}) {
         
         <PageContainer>
             <main>
-                <QrSectionContainer className="QRCode-Container">
-                    <QrMainHeading>Here are your QR Codes!</QrMainHeading>
-                    <QrSubHeading>Attach each one to your table and you are good to go</QrSubHeading>
-                    <QrGrid>
-                        {restaurant && Array.isArray(restaurant.table_qr_codes) && restaurant.table_qr_codes.map((qrcode, index) =>
-                            <QrContainer key={index}>
-                                <p>Table {index + 1}</p>
-                                <img src={qrcode.qr} />
-                            </QrContainer>
-                        )}
-                    </QrGrid>
-                </QrSectionContainer>
+                <SectionContainer className="QRCode-Container">
+                    <MainHeading>Here are your QR Codes!</MainHeading>
+                    <SubHeading>Attach each one to your table and you are good to go</SubHeading>
+                    {restaurant && Array.isArray(restaurant.table_qr_codes) && restaurant.table_qr_codes.map((qrcode, index) => 
+                        <div key={index}>
+                            <Text>Table {index + 1}</Text>
+                            <img src={qrcode.qr} />
+                        </div>
+                    )}
+                </SectionContainer>
             </main>
             <footer>
 
