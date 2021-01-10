@@ -12,6 +12,11 @@ function RestaurantSearch({}) {
     const { query } = queryParam
     const updateInput = e => setQueryParam({ ...query, [e.target.name]: e.target.value });
 
+    const queryRestaurant = async (query) => {
+        const result = await SearchRestaurant(query)
+        console.log(result)
+    }
+
     return (
         <div>
             <header>
@@ -22,7 +27,7 @@ function RestaurantSearch({}) {
             <main>
                 <SectionContainer>
                     <TextInput type="text" placeholder={" name or phonenumber"} name="query" onChange={updateInput}></TextInput>
-                    <PrimaryButton className="Primary-Button" onClick={() => SearchRestaurant(query)}>Confirm</PrimaryButton>
+                    <PrimaryButton className="Primary-Button" onClick={() => queryRestaurant(query)}>Confirm</PrimaryButton>
                 </SectionContainer>
             </main>
             <footer>
