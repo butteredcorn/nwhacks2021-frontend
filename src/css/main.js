@@ -108,6 +108,14 @@ const Text = styled.p`
 color: ${props => props.theme.textColour};
 `
 
+const DashboardContainer = styled.div`
+  width:80%;
+  padding:40px 0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+`
 
 
-export { PageContainer, FormContainer, SectionContainer, MainHeading, SubHeading, PrimaryButton, SmallButton, NavbarButton, TextInput, PasswordInput, Text }
+export { PageContainer, FormContainer, SectionContainer, MainHeading, SubHeading, PrimaryButton, SmallButton, NavbarButton, TextInput, PasswordInput, Text , DashboardContainer }

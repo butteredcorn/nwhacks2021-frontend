@@ -10,6 +10,7 @@ import RestaurantQRCodes from './pages/QRCodes'
 import RestaurantMenu from './pages/RestaurantMenu'
 import Payment from './pages/Payment'
 import PostPayment from './pages/PostPayment'
+import Dashboard from './pages/Dashboard'
 
 function App(props) {
 
@@ -32,6 +33,7 @@ function App(props) {
         <Route path="/restaurant/payment" component={Payment}/>
         <Route path="/postpayment" component={PostPayment} />
         <Route path="/partner" component={Partner} exact />
+        <Route path="/dashboard" component={Dashboard} exact/>
       </Switch>
     </div>
   )

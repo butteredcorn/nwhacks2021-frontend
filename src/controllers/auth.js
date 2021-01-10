@@ -6,6 +6,7 @@ const login = async (email, password) => {
     } else {
         console.log({email, password})
         localStorage.setItem('token', `<fake token>`)
+        localStorage.setItem('password' , password)
         window.location.href = "/";
     }
 }

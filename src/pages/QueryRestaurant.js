@@ -69,7 +69,7 @@ function RestaurantSearch({}) {
         if (!restaurantObj.tables) handleError(new Error("Please enter a value for number of tables."))
         const token = localStorage.getItem('token')
         //setRestaurantObj({documenuId: restaurant.restaurant_id, tables: restaurantObj.tables, password: token})
-        const newRestaurant = await createRestaurant({documenuId: restaurant.restaurant_id, tables: parseInt(restaurantObj.tables), password: token})
+        const newRestaurant = await createRestaurant({documenuId: restaurant.restaurant_id, tables: parseInt(restaurantObj.tables), password: 'admin'})
         redirectToQRCodePage(newRestaurant)
     }
 

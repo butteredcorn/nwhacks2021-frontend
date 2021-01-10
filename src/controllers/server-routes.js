@@ -6,11 +6,7 @@ const serverUrl = process.env.REACT_APP_WEBSERVER_URL
 const createRestaurant = async (restaurant) => {
     try {
         console.log(restaurant)
-<<<<<<< HEAD
-        const result = await axios.post(`${serverUrl}/api/restaurant/create`, restaurant)
-=======
         const result = await axios.post(`${process.env.REACT_APP_WEBSERVER_URL}/api/restaurant/create`, restaurant)
->>>>>>> 994c4a3768ca26aeb91ce4d8a54c2f59e7529f2c
         const rawData = result.data
         //const qrCodeArray = rawData.data.tables
         const newRestaurantObj = {restaurant_id: rawData.generatedId, restaurant_name: rawData.name, table_qr_codes: rawData.tables, menu: rawData.menu, }
@@ -31,13 +27,6 @@ const getRestaurantByID = async (restaurant_id) => {
     }
 }
 
-// POST /api/restaurant/[restaurantId]/[tableId]/place-order
-// JSON body { items }
-// items is an array of {
-//   title: string
-//   quantity: number
-//   price: number
-// }
 const placeOrder = async (order) => {
     try {
         const result = await axios.post(`${process.env.REACT_APP_WEBSERVER_URL}/api/restaurant/${order.restaurant_id}/${order.table_id}/place-order`, {items: order.items})
@@ -68,4 +57,13 @@ const purchaseCompleted = async (orderId) => {
     }
 }
 
-export { getRestaurantByID, createRestaurant, placeOrder , getStripeCode , purchaseCompleted }
+const getRestaurantOrders = async (restaurantId , password) => {
+    try {
+        const result = await axios.post(`${process.env.REACT_APP_WEBSERVER_URL}/api/restaurant/${restaurantId}/orders`, {password})
+        return result.data
+    } catch (err) {
+        handleError(err)
+    }
+}
+
+export { getRestaurantByID, createRestaurant, placeOrder , getStripeCode , purchaseCompleted , getRestaurantOrders }
