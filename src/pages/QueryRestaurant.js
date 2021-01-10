@@ -103,6 +103,7 @@ function RestaurantSearch({}) {
         <PageContainer className="Restaurant-Search-Page">
             <main className="Restaurant-Search-Main">
                 <SectionContainer className="Restaurant-Search-Container">
+                    <MainHeading>Search by name or phone number</MainHeading>
                     <SearchBar onSubmit={(e) => { e.preventDefault(); queryRestaurant(query) }}>
                         <TextInput className="Restaurant-Search-Bar" type="text" placeholder={"name or phonenumber"} name="query" onChange={updateInput}></TextInput>
                         <PrimaryButton className="Primary-Button Search-Bar-Button">Search</PrimaryButton>
