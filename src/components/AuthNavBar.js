@@ -14,7 +14,7 @@ function AuthNavBar({}) {
 
     return (
         <NavBar>
-            <NavbarButton className="UI-Button">Go back</NavbarButton>
+            <NavbarButton className="UI-Button" onClick={() => window.history.back()}>Go back</NavbarButton>
         </NavBar>
     )
 }
