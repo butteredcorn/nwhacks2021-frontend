@@ -8,11 +8,9 @@ import { PageContainer, SectionContainer, MainHeading, SubHeading , PrimaryButto
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE);
 
 
+
+
 function Payment(props) {
-
-    const reducer = (accumulator, currentValue) => (accumulator.price * accumulator.quantity) + (currentValue.price * currentValue.quantity);
-
-
 
     const location = useLocation();
     const [order, setOrder] = useState(null)
@@ -21,7 +19,7 @@ function Payment(props) {
     useEffect(() => {
        if(location.state){
         setOrder(location.state)
-        const itemsSum = (location.state.items.reduce(reducer)).price
+        const itemsSum = calculateSum(location.state.items)
         console.log(itemsSum)
         setSum(itemsSum)
        }
@@ -69,5 +67,16 @@ function Payment(props) {
         </div>
     )
 }
+
+const calculateSum = (items) => {
+    let sum = 0
+    for(const item of items){
+        let itemSum = 0
+        itemSum+= item.quantity * item.price
+        sum += itemSum
+    }
+    return sum
+}
+
 
 export default Payment;
