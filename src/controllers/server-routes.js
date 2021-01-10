@@ -88,4 +88,13 @@ const getStripeCode = async (orderId) => {
     }
 }
 
-export { getRestaurantByID, createRestaurant, placeOrder , getStripeCode }
+
+const purchaseCompleted = async (orderId) => {
+    try {
+        const result = await axios.post(`https://nomno.herokuapp.com/api/purchase/completed`, {orderId , isPaid : true})
+    } catch (err) {
+        handleError(err)
+    }
+}
+
+export { getRestaurantByID, createRestaurant, placeOrder , getStripeCode , purchaseCompleted }

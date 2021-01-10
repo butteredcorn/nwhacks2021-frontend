@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import styled from "styled-components"
 import { Route, Switch } from "react-router-dom"
-
 import './css/App.css';
-
 import Landing from './pages/Landing'
 import Partner from './pages/Partner'
 import Home from './pages/Home'
@@ -12,8 +9,9 @@ import RestaurantSearch from './pages/QueryRestaurant'
 import RestaurantQRCodes from './pages/QRCodes'
 import RestaurantMenu from './pages/RestaurantMenu'
 import Payment from './pages/Payment'
+import PostPayment from './pages/PostPayment'
 
-function App({ }) {
+function App(props) {
 
   const [token, setToken] = useState(null)
 
@@ -31,7 +29,7 @@ function App({ }) {
         <Route path="/restaurant/qrcodes" component={RestaurantQRCodes}/>
         <Route path="/restaurant/menu" component={RestaurantMenu}/>
         <Route path="/restaurant/payment" component={Payment}/>
-
+        <Route path="/postpayment" component={PostPayment} />
       </Switch>
     </div>
   )
