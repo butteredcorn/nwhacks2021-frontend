@@ -3,7 +3,7 @@ import styled from "styled-components"
 const PageContainer = styled.div`
 display: flex;
 width: 100%;
-height: 100vh;
+min-height: 100vh;
 justify-content: center;
 align-items: center;
 list-style: none;
@@ -19,6 +19,7 @@ align-items: center;
 background: ${props => props.theme.backgroundColour};
 min-height: 200px;
 margin: 2rem;
+margin: 4rem;
 border-radius: 15px;
 box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.3);
 `
@@ -61,8 +62,22 @@ font-weight: 500;
 &:focus {
     outline: none;
     box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);;
-}
-` 
+}`
+
+const SmallButton = styled.button`
+color: ${props => props.theme.uiColour};
+background: ${props => props.theme.uiBackgroundColour}
+padding-top: 0.5rem;
+padding-left: 0.5rem;
+padding-right: 0.5rem;
+padding-botton: 0.5rem;
+font-size: 1rem;
+border: none;
+font-weight: 500;
+&:focus {
+    outline: none;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);;
+}` 
 
 const NavbarButton = styled.button`
 color: ${props => props.theme.textColour};
@@ -93,4 +108,4 @@ const PasswordInput = styled(TextInput).attrs({
 
 
 
-export { PageContainer, FormContainer, SectionContainer, MainHeading, SubHeading, PrimaryButton, NavbarButton, TextInput, PasswordInput }
+export { PageContainer, FormContainer, SectionContainer, MainHeading, SubHeading, PrimaryButton, SmallButton, NavbarButton, TextInput, PasswordInput }
