@@ -10,10 +10,10 @@ const base = {
     containerBackgroundColour: "#FF9954",
     backgroundColour: "black",
     textColour: "white",
-    navColour: "black",
+    uiColour: "black",
     mainHeadingColour: "white",
     subHeadingColour: "white",
-    navBackgroundColour: "#FF7518"
+    uiBackgroundColour: "#FF7518"
   };
   
   const light = {
@@ -22,10 +22,10 @@ const base = {
     containerBackgroundColour: "#FF9954",
     backgroundColour: "white",
     textColour: "black",
-    navColour: "white",
+    uiColour: "white",
     mainHeadingColour: "black",
     subHeadingColour: "black",
-    navBackgroundColour: "#FF7518",
+    uiBackgroundColour: "#FF7518",
   };
   
 export const theme = { dark, light };
