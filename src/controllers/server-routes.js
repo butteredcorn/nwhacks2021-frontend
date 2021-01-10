@@ -70,6 +70,9 @@ const getRestaurantByID = async (restaurant_id) => {
 const placeOrder = async (order) => {
     try {
         console.log(order)
+        console.log(order.restaurant_id)
+        console.log(order.table_id)
+        console.log(order.items)
         const result = await axios.post(`https://nomno.herokuapp.com/api/restaurant/${order.restaurant_id}/${order.table_id}/place-order`, {items: order.items})
         console.log(result.data)
     } catch (err) {
