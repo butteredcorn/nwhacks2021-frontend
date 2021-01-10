@@ -10,6 +10,7 @@ import Login from './pages/Login'
 import RestaurantSearch from './pages/QueryRestaurant'
 import RestaurantQRCodes from './pages/QRCodes'
 import RestaurantMenu from './pages/RestaurantMenu'
+import Payment from './pages/Payment'
 
 function App({ }) {
 
@@ -28,6 +29,8 @@ function App({ }) {
         <Route path="/restaurant/search" component={RestaurantSearch}/>
         <Route path="/restaurant/qrcodes" component={RestaurantQRCodes}/>
         <Route path="/restaurant/menu" component={RestaurantMenu}/>
+        <Route path="/restaurant/payment" component={Payment}/>
+
       </Switch>
     </div>
   )

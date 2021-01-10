@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import {useLocation} from 'react-router-dom'
+import {Redirect, useLocation} from 'react-router-dom'
+
 import styled from "styled-components"
 import queryString from 'query-string'
 import Modal from "react-bootstrap/Modal";
@@ -25,6 +26,7 @@ function RestaurantMenu({}) {
     const [order, setOrder] = useState({restaurant: null, order: null})
     const updateOrder = e => setOrder({...order, order: {...order.order, [e.target.name]: {qty: e.target.value, pricePerQty: e.currentTarget.attributes.getNamedItem("data-price").value } }});
     const [showModal, setShowModel] = useState({show: false, order: null})
+    const [redirect, setRedirect] = useState({redirect: false})
 
     const getRestaurant = async (restaurant_id) => {
         const restaurantObj = await getRestaurantByID(restaurant_id)
@@ -66,18 +68,23 @@ function RestaurantMenu({}) {
             items.push({title: item, quantity: order.order[item].qty, price: order.order[item].pricePerQty}) 
         }
         const submission = {restaurant_id: order.restaurant.generatedId, table_id: restaurantQS.table, items: items}
-        await placeOrder(submission)
+        const orderID = await placeOrder(submission)
+        redirectToPaymentPage(orderID)
     }
 
     const modalFunction = (order) => {
         setShowModel({show: !showModal.show, order: order})
     }
 
+    const redirectToPaymentPage = (orderID) => {
+        setRedirect({redirect: !redirect.redirect, path: "/restaurant/payment", state: orderID})
+    }
+
     useEffect(() => {
         loadPage()
     },[])
 
-    return (
+    return redirect.redirect ? <Redirect to={{pathname: redirect.path, state: redirect.state}}/> : (
         <div>
             <header>
                 <NavBar/>
