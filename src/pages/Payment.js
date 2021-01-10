@@ -53,10 +53,10 @@ function Payment(props) {
             <main>
                 <SectionContainer>
                     <MainHeading>Total : ${sum}</MainHeading>
-                    <SubHeading>Stripe!</SubHeading>
-                    <p>Order ID: {order && order.orderId}</p>
+                    {/* <SubHeading>Stripe!</SubHeading>
+                    <p>Order ID: {order && order.orderId}</p> */}
                     <PrimaryButton variant="primary" className="Primary-Button" onClick={handlePayment}>
-                     Checkout
+                     Continue to payment
                     </PrimaryButton>
                 </SectionContainer>
             </main>

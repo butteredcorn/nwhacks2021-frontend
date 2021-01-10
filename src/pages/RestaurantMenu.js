@@ -99,8 +99,8 @@ function RestaurantMenu({}) {
                         <MenuContainer key={index}>
                             <p>{item.title}</p>
                             <p>{item.description}</p>
-                            <p>{item.price}</p>
-                            <SmallButton name={item.title} value={1} data-price={item.price} onClick={updateOrder}>Add to cart</SmallButton>
+                            {item.price ? <p>{item.price}</p> : <p></p>}
+                            {item.price ? <SmallButton name={item.title} value={1} data-price={item.price} onClick={updateOrder}>Add to cart</SmallButton> : <p></p>}
                         </MenuContainer>
                     )}
                     <PrimaryButton className="Primary-Button Review-Order-Button" onClick={() => modalFunction(order)}>Review Order</PrimaryButton>

@@ -13,7 +13,8 @@ const base = {
     uiColour: "white",
     mainHeadingColour: "white",
     subHeadingColour: "white",
-    uiBackgroundColour: "#FF7518"
+    uiBackgroundColour: "#FF7518",
+    buttonColour: "#DEDEDE"
   };
   
   const light = {
@@ -26,6 +27,7 @@ const base = {
     mainHeadingColour: "black",
     subHeadingColour: "black",
     uiBackgroundColour: "#FF7518",
+    buttonColour: "#DEDEDE"
   };
   
 export const theme = { dark, light };
