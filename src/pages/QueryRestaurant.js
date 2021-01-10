@@ -13,7 +13,7 @@ import Modal from "react-bootstrap/Modal";
 import handleError from '../controllers/error'
 import {createRestaurant} from '../controllers/server-routes'
 
-const SearchBar = styled.div`
+const SearchBar = styled.form`
 display: flex;
 flex-direction: row;
 width: 100%;
@@ -37,6 +37,12 @@ const RestaurantSelectionButton = styled.button`
         outline: none;
         box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);;
     }
+`
+
+const RestaurantList = styled.div`
+    display: grid;
+    justify-content: center;
+    gap: 1rem;
 `
 
 function RestaurantSearch({}) {
@@ -83,18 +89,18 @@ function RestaurantSearch({}) {
         <PageContainer className="Restaurant-Search-Page">
             <main className="Restaurant-Search-Main">
                 <SectionContainer className="Restaurant-Search-Container">
-                    <SearchBar>
+                    <SearchBar onSubmit={(e) => { e.preventDefault(); queryRestaurant(query) }}>
                         <TextInput className="Restaurant-Search-Bar" type="text" placeholder={"name or phonenumber"} name="query" onChange={updateInput}></TextInput>
-                        <PrimaryButton className="Primary-Button Search-Bar-Button" onClick={() => queryRestaurant(query)}>Search</PrimaryButton>
+                        <PrimaryButton className="Primary-Button Search-Bar-Button">Search</PrimaryButton>
                     </SearchBar>
-                    <div>
+                    <RestaurantList>
                         {!restaurants.loading && Array.isArray(restaurants.data) && restaurants.data.length >= 1 && restaurants.data.map((restaurant, index) => 
                         <RestaurantSelectionButton key={restaurant.restaurant_id} restaurant_id={restaurant.restaurant_id} onClick={() => modalFunction(restaurant)}>
                             <p>{restaurant.restaurant_name}</p>
                             <p>{restaurant.restaurant_website}</p>
                         </RestaurantSelectionButton>
                         )}
-                    </div>
+                    </RestaurantList>
                 </SectionContainer>
             </main>
 
