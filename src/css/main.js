@@ -79,6 +79,7 @@ font-weight: 500;
 const TextInput = styled.input`
 border: 1px solid black;
 border-radius: 25px;
+padding-left: 1rem;
 &:focus {
     outline: none;
     box-shadow: none;

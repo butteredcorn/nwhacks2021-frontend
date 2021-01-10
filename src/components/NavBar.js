@@ -41,6 +41,7 @@ function Navbar({}) {
         <NavBar className="btn-group">
             <div className="navbar">
             <NavLink to="/">Home</NavLink>
+            <NavLink to="/restaurant/search">Search Restaurant</NavLink>
             </div>
             <NavToggle onClick={toggleTheme}>Toggle Theme</NavToggle>
         </NavBar>

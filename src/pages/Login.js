@@ -32,8 +32,8 @@ function Login({}) {
                 <SectionContainer className="Login-Form">
                     <FormHeader className="Form-Header"><AuthNavBar/></FormHeader>
                     <SubHeading className="Login-Heading">Login</SubHeading>
-                    <TextInput type="text" placeholder={" Email"} name="email" onChange={updateInput}></TextInput>
-                    <PasswordInput placeholder={" Password"} name="password" textContentType={"password"} onChange={updateInput}></PasswordInput>
+                    <TextInput type="text" placeholder={"Email"} name="email" onChange={updateInput}></TextInput>
+                    <PasswordInput placeholder={"Password"} name="password" textContentType={"password"} onChange={updateInput}></PasswordInput>
                     <PrimaryButton className="Primary-Button" onClick={() => login(email, password)}>Confirm</PrimaryButton>
                 </SectionContainer>
             </main>
