@@ -9,6 +9,7 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import RestaurantSearch from './pages/QueryRestaurant'
 import RestaurantQRCodes from './pages/QRCodes'
+import RestaurantMenu from './pages/RestaurantMenu'
 
 function App({ }) {
 
@@ -26,6 +27,7 @@ function App({ }) {
         <Route path="/home" component={Home} />
         <Route path="/restaurant/search" component={RestaurantSearch}/>
         <Route path="/restaurant/qrcodes" component={RestaurantQRCodes}/>
+        <Route path="/restaurant/menu" component={RestaurantMenu}/>
       </Switch>
     </div>
   )
