@@ -21,14 +21,35 @@ background: ${props => props.theme.buttonColour};
 
 function Home({}) { 
     const [qrCode, setQRCode] = useState(null)
+    const [imageData, setImageData] = useState(null)
+    const [imageDimensions, setImageDimensions] = useState(null)
 
     const handleCapture = (e) => {
-        console.log(e.target)
+        // console.log(e.target)
         if (e.target.files) {
             if (e.target.files.length !== 0) {
+                const reader = new FileReader()
+                reader.onload = function() {
+                    const image = new Image()
+                    const blobUrl = URL.createObjectURL(file);
+                    image.onload = function() {
+                        setImageDimensions({ width: this.width, height: this.height })
+                        URL.revokeObjectURL(blobUrl)
+                    }
+                    image.src = blobUrl
+
+                    const imageData = new Uint8ClampedArray(reader.result)
+                    // const binaryString = String.fromCharCode.apply(null, imageData)
+                    setImageData(imageData)
+                    // console.log(binaryString)
+
+                    // handleRedirect(imageData)
+                }
+
                 const file = e.target.files[0];
-                const blobUrl = URL.createObjectURL(file);
-                setQRCode(blobUrl);
+                reader.readAsArrayBuffer(file)
+
+                // setQRCode(blobUrl);
 
                 //need to convert blobUrl to ImageData
                 //handleRedirect(new new Uint8ClampedArray(new Blob(blobUrl)))
@@ -36,9 +57,13 @@ function Home({}) {
           }
         }
 
-    const handleRedirect = (qrCode) => {
-        const code = jsQR(qrCode); //accepts imageData
-        console.log(code)
+    const handleScan = (e) => {
+        // alert(qrCode)
+        console.log(imageData)
+        const { width, height } = imageDimensions
+        console.log(width, height)
+        // const code = jsQR(new ImageData(imageData, width), width, height)
+        // console.log(code)
     }
 
     return (
@@ -53,7 +78,7 @@ function Home({}) {
                     <MainHeading>Welcome to Nom Nom Tech!</MainHeading>
                     <SubHeading>Scan a QR code to get started!</SubHeading>
                     <Input className="Camera-Function" accept='image/*' id='icon-button-file' type='file' capture='environment' onChange={handleCapture}/>
-                    <PrimaryButton className="Primary-Button" onClick={() => alert(qrCode)}>Scan</PrimaryButton>
+                    <PrimaryButton className="Primary-Button" onClick={handleScan}>Scan</PrimaryButton>
                 </SectionContainer>
             </main>
             <footer>
