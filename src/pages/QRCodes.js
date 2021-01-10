@@ -4,7 +4,7 @@ import styled from "styled-components"
 
 import NavBar from '../components/NavBar'
 
-import { PageContainer, SectionContainer, MainHeading, SubHeading } from '../css/main'
+import { PageContainer, SectionContainer, MainHeading, SubHeading, Text } from '../css/main'
 
 
 
@@ -31,7 +31,7 @@ function QRCodes({}) {
                     <SubHeading>Attach each one to your table and you are good to go</SubHeading>
                     {restaurant && Array.isArray(restaurant.table_qr_codes) && restaurant.table_qr_codes.map((qrcode, index) => 
                         <div key={index}>
-                            <p>Table {index + 1}</p>
+                            <Text>Table {index + 1}</Text>
                             <img src={qrcode.qr} />
                         </div>
                     )}
