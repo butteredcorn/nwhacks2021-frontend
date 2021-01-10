@@ -24,6 +24,7 @@ function App(props) {
     <div>
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route exact path="/home" component={Home} />
         <Route path="/landing" component={Landing} />
         <Route path="/restaurant/search" component={RestaurantSearch}/>
         <Route path="/restaurant/qrcodes" component={RestaurantQRCodes}/>
