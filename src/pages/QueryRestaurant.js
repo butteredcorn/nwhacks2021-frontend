@@ -25,27 +25,38 @@ border-radius: 25px;
 `
 
 const RestaurantSelectionButton = styled.button`
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    gap: 0.5rem;
     align-items: center;
     color: ${props => props.theme.textColour};
     background: ${props => props.theme.buttonColour};
-    margin: 0.5rem;
-    margin-bottom: 1rem;
     border: none;
     border-radius: 15px;
+    padding: 2rem;
+    max-width: 40rem;
     &:focus {
         outline: none;
         box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);;
     }&:hover {
         background: ${props => props.theme.uiBackgroundColour};
     }
+    p {
+        &:first-child {
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        word-break: break-all;
+        margin: 0;
+        &:last-child {
+            font-size: 0.75rem;
+        }
+    }
 `
 
 const RestaurantList = styled.div`
     display: grid;
     justify-content: center;
-    gap: 1rem;
+    gap: 2rem;
 `
 
 function RestaurantSearch({}) {
