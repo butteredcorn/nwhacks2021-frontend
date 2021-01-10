@@ -33,7 +33,7 @@ function App(props) {
         <Route path="/restaurant/payment" component={Payment}/>
         <Route path="/postpayment" component={PostPayment} />
         <Route path="/partner" component={Partner} exact />
-        <Route path="/dashboard" component={Dashboard} exact/>
+        <Route path="/restaurant/dashboard" component={Dashboard} exact/>
       </Switch>
     </div>
   )
