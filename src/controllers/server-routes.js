@@ -77,4 +77,15 @@ const placeOrder = async (order) => {
     }
 }
 
-export { getRestaurantByID, createRestaurant, placeOrder }
+
+const getStripeCode = async (orderId) => {
+    try {
+        const result = await axios.post(`https://nomno.herokuapp.com/api/purchase/`, {orderId})
+        console.log(result.data)
+        return result.data
+    } catch (err) {
+        handleError(err)
+    }
+}
+
+export { getRestaurantByID, createRestaurant, placeOrder , getStripeCode }
