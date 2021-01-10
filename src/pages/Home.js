@@ -16,7 +16,7 @@ function Home({}) {
             <main>
                 <SectionContainer>
                     <MainHeading>Welcome to Nom Nom Tech!</MainHeading>
-                    <SubHeading>Scan a QR code here!</SubHeading>
+                    <SubHeading>Scan a QR code to get started!</SubHeading>
                 </SectionContainer>
             </main>
             <footer>

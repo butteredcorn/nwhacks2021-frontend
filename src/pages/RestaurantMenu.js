@@ -7,7 +7,7 @@ import Modal from "react-bootstrap/Modal";
 
 import NavBar from '../components/NavBar'
 
-import { PageContainer, SectionContainer, MainHeading, SubHeading, SmallButton, PrimaryButton } from '../css/main'
+import { PageContainer, SectionContainer, MainHeading, SubHeading, SmallButton, PrimaryButton, Text } from '../css/main'
 
 import { getRestaurantByID, placeOrder } from '../controllers/server-routes'
 
@@ -93,14 +93,14 @@ function RestaurantMenu({}) {
         <PageContainer>
             <main>
                 <SectionContainer>
-                    {restaurant.loading ? <MainHeading>Loading Menu</MainHeading> : <MainHeading>{restaurant.data[0].name}</MainHeading>}
+                    {restaurant.loading ? <MainHeading>Loading Menu</MainHeading> : <MainHeading>{restaurant.data[0] && restaurant.data[0].name}</MainHeading>}
                     <SubHeading>Menu</SubHeading>
-                    {!restaurant.loading && Array.isArray(restaurant.data) && restaurant.data[0].menu.map((item, index) => 
+                    {!restaurant.loading && Array.isArray(restaurant.data) && restaurant.data[0] && restaurant.data[0].menu.map((item, index) => 
                         <MenuContainer key={index}>
-                            <p>{item.title}</p>
-                            <p>{item.description}</p>
-                            {item.price ? <p>{item.price}</p> : <p></p>}
-                            {item.price ? <SmallButton name={item.title} value={1} data-price={item.price} onClick={updateOrder}>Add to cart</SmallButton> : <p></p>}
+                            <Text>{item.title}</Text>
+                            <Text>{item.description}</Text>
+                            {item.price ? <Text>{item.price}</Text> : <Text></Text>}
+                            {item.price ? <SmallButton name={item.title} value={1} data-price={item.price} onClick={updateOrder}>Add to cart</SmallButton> : <Text></Text>}
                         </MenuContainer>
                     )}
                     <PrimaryButton className="Primary-Button Review-Order-Button" onClick={() => modalFunction(order)}>Review Order</PrimaryButton>
@@ -114,9 +114,9 @@ function RestaurantMenu({}) {
                 <Modal.Body>
                     {showModal.order && showModal.order.order && Object.keys(showModal.order.order).map((item, index) => 
                         <div key={item}>
-                            <p>{item}</p>
-                            <p>Qty: {showModal.order.order[item].qty}</p>
-                            <p>Price: ${((showModal.order.order[item].qty * showModal.order.order[item].pricePerQty)*100/100).toFixed(2)}</p>
+                            <Text>{item}</Text>
+                            <Text>Qty: {showModal.order.order[item].qty}</Text>
+                            <Text>Price: ${((showModal.order.order[item].qty * showModal.order.order[item].pricePerQty)*100/100).toFixed(2)}</Text>
                         </div>
                     )}
                 </Modal.Body>

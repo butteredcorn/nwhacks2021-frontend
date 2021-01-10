@@ -7,8 +7,8 @@ const base = {
   const dark = {
     id: "dark",
     ...base,
-    containerBackgroundColour: "#FF9954",
-    backgroundColour: "black",
+    containerBackgroundColour: "#a84c00",
+    backgroundColour: "#36454F",
     textColour: "white",
     uiColour: "white",
     mainHeadingColour: "white",
