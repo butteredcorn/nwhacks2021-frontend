@@ -8,7 +8,7 @@ import NavBar from '../components/NavBar'
 
 import { PageContainer, SectionContainer, MainHeading, SubHeading, SmallButton, PrimaryButton } from '../css/main'
 
-import { getRestaurantByID } from '../controllers/server-routes'
+import { getRestaurantByID, placeOrder } from '../controllers/server-routes'
 
 const MenuContainer = styled.div`
 display: flex;
@@ -39,8 +39,34 @@ function RestaurantMenu({}) {
         getRestaurant(restaurantQS.id)
     }
 
-    const reviewOrder = () => {
+    // {restaurant: {…}, order: {…}}
+    // order:
+    // Pizza: {qty: "1", pricePerQty: "30"}
+    // Spaghetti: {qty: "1", pricePerQty: "20.5"}
+    // __proto__: Object
+    // restaurant:
+    // generatedId: "1f1db79b-49db-4fe5-8393-d6d7caa21375"
+    // menu: (2) [{…}, {…}]
+    // name: "Italian Restaurant"
+    // tables: (3) [{…}, {…}, {…}]
+    // __proto__: Object
+    // __proto__: Object
+    const submitOrder = async (order) => {
         console.log(order)
+        const restaurantQS = queryString.parse(location.search);
+        // items is an array of {
+        //     title: string
+        //     quantity: number
+        //     price: number
+        //   }
+        const itemsArray = Object.keys(order.order)
+
+        const items = []
+        for (let item of itemsArray) {
+            items.push({title: item, quantity: order.order[item].qty, price: order.order[item].pricePerQty}) 
+        }
+        const submission = {restaurant_id: order.restaurant.generatedId, table_id: restaurantQS.table, items: items}
+        await placeOrder(submission)
     }
 
     const modalFunction = (order) => {
@@ -91,8 +117,8 @@ function RestaurantMenu({}) {
                 <PrimaryButton variant="secondary" className="Primary-Button" onClick={modalFunction}>
                     Close
                 </PrimaryButton>
-                <PrimaryButton variant="primary" className="Primary-Button" onClick={() => alert('submitted!')}>
-                    Create
+                <PrimaryButton variant="primary" className="Primary-Button" onClick={() => submitOrder(showModal.order)}>
+                    Checkout
                 </PrimaryButton>
                 </Modal.Footer>
             </Modal> 

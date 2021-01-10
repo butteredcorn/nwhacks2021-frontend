@@ -60,4 +60,21 @@ const getRestaurantByID = async (restaurant_id) => {
     }
 }
 
-export { getRestaurantByID, createRestaurant }
+// POST /api/restaurant/[restaurantId]/[tableId]/place-order
+// JSON body { items }
+// items is an array of {
+//   title: string
+//   quantity: number
+//   price: number
+// }
+const placeOrder = async (order) => {
+    try {
+        console.log(order)
+        const result = await axios.post(`https://nomno.herokuapp.com/api/restaurant/${order.restaurant_id}/${order.table_id}/place-order`, {items: order.items})
+        console.log(result.data)
+    } catch (err) {
+        handleError(err)
+    }
+}
+
+export { getRestaurantByID, createRestaurant, placeOrder }
