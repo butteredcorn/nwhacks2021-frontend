@@ -5,7 +5,7 @@ import queryString from 'query-string'
 
 import NavBar from '../components/NavBar'
 
-import { PageContainer, SectionContainer, MainHeading, SubHeading } from '../css/main'
+import { PageContainer, SectionContainer, MainHeading, SubHeading, SmallButton } from '../css/main'
 
 import { getRestaurantByID } from '../controllers/server-routes'
 
@@ -50,10 +50,11 @@ function RestaurantMenu({}) {
                     {restaurant.loading ? <MainHeading>Loading Menu</MainHeading> : <MainHeading>{restaurant.data[0].name}</MainHeading>}
                     <SubHeading>Menu</SubHeading>
                     {!restaurant.loading && restaurant.data[0].menu.map((item, index) => 
-                        <MenuContainer>
+                        <MenuContainer key={index}>
                             <p>{item.title}</p>
                             <p>{item.description}</p>
                             <p>{item.price}</p>
+                            <SmallButton onClick={() => alert('added to cart!')}>Add to cart</SmallButton>
                         </MenuContainer>
                     )}
                 </SectionContainer>
