@@ -21,6 +21,7 @@ min-height: 200px;
 margin: 0;
 padding: 40px;
 margin-top: 4rem;
+margin-bottom: 4rem;
 border-radius: 15px;
 box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.3);
 `
@@ -48,6 +49,7 @@ color: ${props => props.theme.subHeadingColour};
 background: ${props => props.theme.backgroundColor};
 padding: 0.5rem;
 font-size: 2rem;
+margin-bottom: 2rem;
 `
 
 const PrimaryButton = styled.button`
