@@ -5,6 +5,7 @@ import { Route, Switch } from "react-router-dom"
 import './css/App.css';
 
 import Landing from './pages/Landing'
+import Partner from './pages/Partner'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import RestaurantSearch from './pages/QueryRestaurant'
@@ -38,7 +39,8 @@ function App({ }) {
     (<div>
       <Switch>
         <Route path="/" component={Landing} exact />
-        <Route path="/*" component={Login} />
+        <Route path="/partner" component={Partner} exact />
+        <Route path="*" component={Login} />
       </Switch>
     </div>)
 }
