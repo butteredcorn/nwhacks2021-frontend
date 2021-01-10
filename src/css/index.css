@@ -21,6 +21,10 @@ code {
   background-color: white;
 }
 
+.Search-Bar-Button {
+  border-radius: 25px;
+}
+
 @media only screen and (min-width: 1501px) {
   * {
     font-size: 20px;
