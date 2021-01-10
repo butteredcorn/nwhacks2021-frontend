@@ -4,7 +4,9 @@ import NavBar from '../components/NavBar'
 
 import { PageContainer, SectionContainer, MainHeading, SubHeading } from '../css/main'
 
-function Home({}) {
+function RestaurantMenu({}) {
+
+    
 
     return (
         <div>
@@ -15,8 +17,8 @@ function Home({}) {
         <PageContainer>
             <main>
                 <SectionContainer>
-                    <MainHeading>Welcome to Nom Nom Tech!</MainHeading>
-                    <SubHeading>Scan a QR code here!</SubHeading>
+                    <MainHeading>Menu Here</MainHeading>
+                    <SubHeading></SubHeading>
                 </SectionContainer>
             </main>
             <footer>
@@ -27,4 +29,4 @@ function Home({}) {
     )
 }
 
-export default Home;
+export default RestaurantMenu;

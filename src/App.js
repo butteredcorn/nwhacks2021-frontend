@@ -8,6 +8,7 @@ import Landing from './pages/Landing'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import RestaurantSearch from './pages/QueryRestaurant'
+import RestaurantQRCodes from './pages/QRCodes'
 
 function App({ }) {
 
@@ -23,7 +24,8 @@ function App({ }) {
       <Switch>
         <Route exact path="/" component={Landing} />
         <Route path="/home" component={Home} />
-        <Route path="/restaurant/search" component={RestaurantSearch}></Route>
+        <Route path="/restaurant/search" component={RestaurantSearch}/>
+        <Route path="/restaurant/qrcodes" component={RestaurantQRCodes}/>
       </Switch>
     </div>
   )

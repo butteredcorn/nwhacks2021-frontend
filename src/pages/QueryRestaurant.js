@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import {Redirect} from 'react-router-dom'
 import styled from "styled-components"
 
 import SearchRestaurant from '../controllers/documenu'
@@ -45,6 +46,7 @@ function RestaurantSearch({}) {
     const [queryParam, setQueryParam] = useState({query: ""})
     const { query } = queryParam
     const updateInput = e => setQueryParam({ ...query, [e.target.name]: e.target.value });
+    const [redirect, setRedirect] = useState({redirect: false})
 
     const [restaurantObj, setRestaurantObj] = useState({documenuId: null, tables: null, password: null})
     const updateRestaurantObj = e => setRestaurantObj({ ...restaurantObj, [e.target.name]: e.target.value });
@@ -64,10 +66,15 @@ function RestaurantSearch({}) {
         if (!restaurantObj.tables) handleError(new Error("Please enter a value for number of tables."))
         const token = localStorage.getItem('token')
         //setRestaurantObj({documenuId: restaurant.restaurant_id, tables: restaurantObj.tables, password: token})
-        createRestaurant({documenuId: restaurant.restaurant_id, tables: restaurantObj.tables, password: token})
+        const newRestaurant = await createRestaurant({documenuId: restaurant.restaurant_id, tables: parseInt(restaurantObj.tables), password: token})
+        redirectToQRCodePage(newRestaurant)
     }
 
-    return (
+    const redirectToQRCodePage = (newRestaurant) => {
+        setRedirect({redirect: !redirect.redirect, path: "/restaurant/qrcodes", state: newRestaurant})
+    }
+
+    return redirect.redirect ? <Redirect to={{pathname: redirect.path, state: redirect.state}}/> : (
         <div>
             <header>
                 <NavBar/>

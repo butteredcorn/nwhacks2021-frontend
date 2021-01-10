@@ -19,6 +19,7 @@ align-items: center;
 background: ${props => props.theme.backgroundColour};
 min-height: 200px;
 margin: 2rem;
+margin: 4rem;
 border-radius: 15px;
 box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.3);
 `
