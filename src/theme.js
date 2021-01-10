@@ -10,7 +10,7 @@ const base = {
     containerBackgroundColour: "#FF9954",
     backgroundColour: "black",
     textColour: "white",
-    uiColour: "black",
+    uiColour: "white",
     mainHeadingColour: "white",
     subHeadingColour: "white",
     uiBackgroundColour: "#FF7518"
@@ -31,7 +31,7 @@ const base = {
 export const theme = { dark, light };
 
 export const initialState = {
-    currentTheme: localStorage.getItem('theme') && JSON.parse(localStorage.getItem('theme')) == "light" ? theme.light : theme.dark
+    currentTheme: localStorage.getItem('theme') && JSON.parse(localStorage.getItem('theme')) == "dark" ? theme.dark : theme.light
 };
 
 

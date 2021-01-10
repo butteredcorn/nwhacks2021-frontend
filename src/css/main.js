@@ -64,6 +64,18 @@ font-weight: 500;
 }
 ` 
 
+const NavbarButton = styled.button`
+color: ${props => props.theme.textColour};
+background: ${props => props.theme.uiBackgroundColour}
+font-size: 1rem;
+border: none;
+font-weight: 500;
+&:focus {
+    outline: none;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);;
+}
+` 
+
 const TextInput = styled.input`
 border: 1px solid black;
 border-radius: 25px;
@@ -80,4 +92,4 @@ const PasswordInput = styled(TextInput).attrs({
 
 
 
-export { PageContainer, FormContainer, SectionContainer, MainHeading, SubHeading, PrimaryButton, TextInput, PasswordInput }
+export { PageContainer, FormContainer, SectionContainer, MainHeading, SubHeading, PrimaryButton, NavbarButton, TextInput, PasswordInput }

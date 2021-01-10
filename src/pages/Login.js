@@ -3,11 +3,19 @@ import styled from "styled-components"
 
 import '../css/login.css'
 
+//components
+import AuthNavBar from '../components/AuthNavBar'
+
 //controllers
 import {login} from '../controllers/auth'
 
-import { PageContainer, SectionContainer, FormContainer, MainHeading, SubHeading, PrimaryButton, TextInput, PasswordInput } from '../css/main'
+import { PageContainer, SectionContainer, FormContainer, MainHeading, SubHeading, PrimaryButton, NavbarButton, TextInput, PasswordInput } from '../css/main'
 
+const FormHeader = styled.div`
+    width: 100%;
+    display: flex;
+    background: ${props => props.theme.backgroundColor};
+`
 
 function Login({}) {
 
@@ -21,12 +29,13 @@ function Login({}) {
 
             </header>
             <main>
-                <FormContainer className="Login-Form">
+                <SectionContainer className="Login-Form">
+                    <FormHeader className="Form-Header"><AuthNavBar/></FormHeader>
                     <SubHeading className="Login-Heading">Login</SubHeading>
                     <TextInput type="text" placeholder={" Email"} name="email" onChange={updateInput}></TextInput>
                     <PasswordInput placeholder={" Password"} name="password" textContentType={"password"} onChange={updateInput}></PasswordInput>
-                    <PrimaryButton className="Primary-Button" type="submit" onClick={() => login(email, password)}>Confirm</PrimaryButton>
-                </FormContainer>
+                    <PrimaryButton className="Primary-Button" onClick={() => login(email, password)}>Confirm</PrimaryButton>
+                </SectionContainer>
             </main>
             <footer>
 

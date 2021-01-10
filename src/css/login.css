@@ -1,7 +1,11 @@
+.Login-Form {
+    min-height: 300px;
+}
+
 .Login-Form > * {
     margin-bottom: 1.5rem;
 }
 
-.Login-Heading {
+.Form-Header {
     margin-top: 1rem;
 }
